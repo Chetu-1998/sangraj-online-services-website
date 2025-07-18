@@ -2504,3 +2504,7 @@ section,
   font-weight: bold;
   font-size: 32px;
 }
+
+.description-about{
+  text-align: justify;
+}

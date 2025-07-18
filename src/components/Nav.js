@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Nav = () => {
     return (
         <header id="header" className="header d-flex align-items-center fixed-top">

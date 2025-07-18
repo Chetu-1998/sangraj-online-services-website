@@ -11,8 +11,12 @@ const About = () => {
                 <div className="row gy-5">
                     <div className="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
                         <h3>Empowering Rural India Through Digital Services</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                        <p className='description-about'>
+                            Established in 2023, our Online Services Shop was started by Rajesh Laxman Patil with the vision of bringing essential digital services closer to the people, especially in rural and underserved areas. As a Village Level Entrepreneur (VLE), Rajesh Laxman Patil has always believed in empowering the community by leveraging technology to simplify everyday tasks.<br>
+                            </br><br></br>
+                            Our shop acts as a one-stop destination for a wide range of online and government services. Whether it's applying for a PAN card, updating Aadhaar details, paying electricity or water bills, submitting government forms, or accessing banking and insurance services — we make it easier, faster, and more reliable for everyone.
+                            <br></br><br></br>
+                            We are constantly updating our offerings to include the latest services required by our customers, making us a trusted name in the community for all digital needs.
                         </p>
                     </div>
                     <div className="col-xl-7" data-aos="fade-up" data-aos-delay="200">

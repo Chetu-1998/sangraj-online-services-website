@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Features = () => {
     return (
         <section id="features" className="features section">
@@ -7,7 +5,7 @@ const Features = () => {
                 <div className="row gy-4">
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
                         <div className="features-item">
-                            <i className="bi bi-building" style={{ color: "#ffbb2c" }}></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i className="bi bi-building" style={{ color: "#ffbb2c" }}></i>
                             <h3><a className="stretched-link">Multiple Government Services</a></h3>
                         </div>
                     </div>

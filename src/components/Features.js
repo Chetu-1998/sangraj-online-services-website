@@ -7,85 +7,85 @@ const Features = () => {
                 <div className="row gy-4">
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
                         <div className="features-item">
-                            <i className="bi bi-eye" style={{ color: "#ffbb2c" }}></i>
-                            <h3><a href="" className="stretched-link">Lorem Ipsum</a></h3>
+                            <i className="bi bi-building" style={{ color: "#ffbb2c" }}></i>
+                            <h3><a className="stretched-link">Multiple Government Services</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div className="features-item">
-                            <i className="bi bi-infinity" style={{color: "#5578ff"}}></i>
-                            <h3><a href="" className="stretched-link">Dolor Sitema</a></h3>
+                            <i className="bi bi-file-earmark-text" style={{color: "#5578ff"}}></i>
+                            <h3><a className="stretched-link">Online Form Filling</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
                         <div className="features-item">
-                            <i className="bi bi-mortarboard" style={{color: "#e80368"}}></i>
-                            <h3><a href="" className="stretched-link">Sed perspiciatis</a></h3>
+                            <i className="bi bi-shield-lock" style={{color: "#e80368"}}></i>
+                            <h3><a className="stretched-link">Data Privacy</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
                         <div className="features-item">
-                            <i className="bi bi-nut" style={{color: "#e361ff"}}></i>
-                            <h3><a href="" className="stretched-link">Magni Dolores</a></h3>
+                            <i className="bi bi-credit-card-2-front" style={{color: "#e361ff"}}></i>
+                            <h3><a className="stretched-link">Digital Payments</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
                         <div className="features-item">
-                            <i className="bi bi-shuffle" style={{color: "#47aeff"}}></i>
-                            <h3><a href="" className="stretched-link">Nemo Enim</a></h3>
+                            <i className="bi bi-geo-alt" style={{color: "#47aeff"}}></i>
+                            <h3><a className="stretched-link">Easy Accessibility</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
                         <div className="features-item">
-                            <i className="bi bi-star" style={{color: "#ffa76e"}}></i>
-                            <h3><a href="" className="stretched-link">Eiusmod Tempor</a></h3>
+                            <i className="bi bi-lightning" style={{color: "#ffa76e"}}></i>
+                            <h3><a className="stretched-link">Quick Service</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
                         <div className="features-item">
-                            <i className="bi bi-x-diamond" style={{color: "#11dbcf"}}></i>
-                            <h3><a href="" className="stretched-link">Midela Teren</a></h3>
+                            <i className="bi bi-emoji-smile" style={{color: "#11dbcf"}}></i>
+                            <h3><a className="stretched-link">Friendly Support</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
                         <div className="features-item">
-                            <i className="bi bi-camera-video" style={{color: "#4233ff"}}></i>
-                            <h3><a href="" className="stretched-link">Pira Neve</a></h3>
+                            <i className="bi bi-printer" style={{color: "#4233ff"}}></i>
+                            <h3><a className="stretched-link">On-the-Spot Printouts</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
                         <div className="features-item">
-                            <i className="bi bi-command" style={{color: "#b2904f"}}></i>
-                            <h3><a href="" className="stretched-link">Dirada Pack</a></h3>
+                            <i className="bi bi-globe" style={{color: "#b2904f"}}></i>
+                            <h3><a className="stretched-link">Online Verification Help</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
                         <div className="features-item">
-                            <i className="bi bi-dribbble" style={{color: "#b20969"}}></i>
-                            <h3><a href="" className="stretched-link">Moton Ideal</a></h3>
+                            <i className="bi bi-person-vcard" style={{color: "#b20969"}}></i>
+                            <h3><a className="stretched-link">ID Card Expertise</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
                         <div className="features-item">
-                            <i className="bi bi-activity" style={{color: "#ff5828"}}></i>
-                            <h3><a href="" className="stretched-link">Verdo Park</a></h3>
+                            <i className="bi bi-receipt" style={{color: "#ff5828"}}></i>
+                            <h3><a className="stretched-link">Transparent Pricing</a></h3>
                         </div>
                     </div>
 
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
                         <div className="features-item">
-                            <i className="bi bi-brightness-high" style={{color: "#29cc61"}}></i>
-                            <h3><a href="" className="stretched-link">Flavor Nivelanda</a></h3>
+                            <i className="bi bi-chat-dots" style={{color: "#29cc61"}}></i>
+                            <h3><a className="stretched-link">SMS Updates</a></h3>
                         </div>
                     </div>
                 </div>

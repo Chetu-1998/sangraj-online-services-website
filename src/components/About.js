@@ -22,28 +22,28 @@ const About = () => {
                     <div className="col-xl-7" data-aos="fade-up" data-aos-delay="200">
                         <div className="row gy-4">
                             <div className="col-md-6 icon-box position-relative">
-                                <i className="bi bi-briefcase"></i>
+                                <i className="bi bi-building"></i>
                                 <h4><a className="stretched-link">Government Services</a></h4>
                                 <p>Aadhaar Address Update, PAN Card, Voter ID, Caste, Income Certificates, Age Nationality and Domocile, Noncreamlayer, Central Caste, Caste Validity.</p>
                             </div>
                             <div className="col-md-6 icon-box position-relative">
-                                <i className="bi bi-gem"></i>
+                                <i className="bi bi-bank"></i>
                                 <h4><a className="stretched-link">Financial Services</a></h4>
                                 <p>Digital banking through DigiPay, PM Jan Dhan Yojana, PM Kisan Samman Nidhi registration, PMSBY & PMJJBY insurance schemes, Pradhan Mantri Fasal Bima Yojana.
                                 </p>
                             </div>
                             <div className="col-md-6 icon-box position-relative">
-                                <i className="bi bi-broadcast"></i>
+                                <i className="bi bi-heart-pulse"></i>
                                 <h4><a className="stretched-link">Health Services</a></h4>
                                 <p>Ayushman Bharat (PM-JAY) registration, Telemedicine, Health ID generation, Eshram Card, Abha Card.</p>
                             </div>
                             <div className="col-md-6 icon-box position-relative">
-                                <i className="bi bi-easel"></i>
+                                <i className="bi bi-journal-bookmark"></i>
                                 <h4><a className="stretched-link">Education & Exams</a></h4>
                                 <p>Scholarship Form, Online Exam Registration, School/College Admission Form Filling.</p>
                             </div>
                             <div className="col-md-6 icon-box position-relative">
-                                <i className="bi bi-easel"></i>
+                                <i className="bi bi-lightning-charge"></i>
                                 <h4><a className="stretched-link">Utility Services</a></h4>
                                 <p>Mobile and DTH recharge, electricity bill payments, Digital Wallet Services, Gas Booking.</p>
                             </div>

@@ -24,21 +24,21 @@ const Contact = () => {
                             <i className="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h3>Address</h3>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <p>Near Savata Mandir, Varchi Aali Nashirabad, Jalgaon 425309</p>
                             </div>
                         </div>
                         <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                             <i className="bi bi-telephone flex-shrink-0"></i>
                             <div>
                                 <h3>Call Us</h3>
-                                <p>+1 5589 55488 55</p>
+                                <p>+91 9834013659</p>
                             </div>
                         </div>
                         <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
                             <i className="bi bi-envelope flex-shrink-0"></i>
                             <div>
                                 <h3>Email Us</h3>
-                                <p>info@example.com</p>
+                                <p>chetan.patil6198@gmail.com</p>
                             </div>
                         </div>
                     </div>

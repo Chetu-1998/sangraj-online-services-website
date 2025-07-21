@@ -1,64 +1,90 @@
-import React from 'react'
+import React, { useState } from 'react';
+
+const faqData = [
+    {
+        icon: "bi bi-question-circle",
+        question: "What is a CSC (Common Service Center)?",
+        answer:
+            "CSC is a government initiative to provide digital access to public services, including certificates, bill payments, insurance, banking, and more, especially in rural areas.",
+    },
+    {
+        question: "What services are offered at a Grahak Seva Kendra?",
+        answer:
+            "Grahak Seva Kendra provides banking services like account opening, cash withdrawal, deposit, fund transfer, balance inquiry, and bill payments under the Business Correspondent model.",
+    },
+    {
+        question: "Can I apply for PAN Card or Aadhar updates through CSC?",
+        answer:
+            "Yes, you can apply for new PAN cards, PAN corrections, and Aadhar-related services at your nearest CSC.",
+    },
+    {
+        question: "What bill payments can I make through CSC?",
+        answer:
+            "You can pay electricity bills, water bills, gas bills, mobile/DTH recharges, and even school fees at CSC centers.",
+    },
+    {
+        question: "Is money withdrawal safe at Grahak Seva Kendra?",
+        answer:
+            "Yes, it is safe. Transactions are authenticated via biometric (fingerprint) or OTP verification. Receipts are provided instantly.",
+    },
+];
 
 const Faq = () => {
+    const [activeIndex, setActiveIndex] = useState(0); // First item open by default
+
+    const toggleFAQ = (index) => {
+        setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+    };
+
     return (
         <section id="faq" className="faq section">
             <div className="container section-title" data-aos="fade-up">
                 <h2>Frequently Asked Questions</h2>
-                <p><span>Section Title</span> <span className="description-title">Direda Flowed</span></p>
+                <p>
+                    <span>Check Our</span>{" "}
+                    <span className="description-title">Faqs</span>
+                </p>
             </div>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-10" data-aos="fade-up" data-aos-delay="100">
                         <div className="faq-container">
-                            <div className="faq-item faq-active">
-                                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                                <div className="faq-content">
-                                    <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                            {faqData.map((faq, index) => (
+                                <div
+                                    key={index}
+                                    className={`faq-item ${activeIndex === index ? "faq-active" : ""
+                                        }`}
+                                    onClick={() => toggleFAQ(index)}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <h3>
+                                        <i className={`${faq.icon || 'bi bi-question-circle'} me-2`}></i>
+                                        {faq.question}
+                                    </h3>
+                                    <div
+                                        className="faq-content"
+                                        style={{
+                                            display: activeIndex === index ? "block" : "none",
+                                            transition: "all 0.3s ease-in-out",
+                                            paddingTop: "10px",
+                                        }}
+                                    >
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                    <i
+                                        className={`faq-toggle bi ${activeIndex === index
+                                            ? "bi-chevron-right"
+                                            : "bi-chevron-right"
+                                            }`}
+                                    ></i>
                                 </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <div className="faq-item">
-                                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
-                                <div className="faq-content">
-                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                                </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <div className="faq-item">
-                                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                                <div className="faq-content">
-                                    <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                                </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <div className="faq-item">
-                                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
-                                <div className="faq-content">
-                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                                </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <div className="faq-item">
-                                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
-                                <div className="faq-content">
-                                    <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                                </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
-                            <div className="faq-item">
-                                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                                <div className="faq-content">
-                                    <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
-                                </div>
-                                <i className="faq-toggle bi bi-chevron-right"></i>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Faq
+export default Faq;

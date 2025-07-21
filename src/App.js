@@ -1,6 +1,7 @@
 import './App.css';
 import About from './components/About';
 import CallToAction from './components/CallToAction';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Faq from './components/Faq';
 import Features from './components/Features';
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <About />
       <Services />
+      {/* <Certifications /> */}
       <Features />
       <CallToAction />
       <Faq />

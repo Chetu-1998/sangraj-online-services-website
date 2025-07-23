@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Nav = () => {
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
+      const sections = document.querySelectorAll("section[id]");
+      let currentSection = "";
+      const headerHeight = 90;
 
       sections.forEach((section) => {
         const top = section.getBoundingClientRect().top;
-        if (top <= 100 && top >= -200) {
-          currentSection = section.getAttribute('id') || '';
+
+        if (top <= headerHeight) {
+          currentSection = section.getAttribute("id") || "";
         }
       });
 
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once on load
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run once on mount
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -36,11 +38,46 @@ const Nav = () => {
 
         <nav id="navmenu" className="navmenu">
           <ul>
-            <li><a href="#hero" className={activeSection === 'hero' ? 'active' : ''}>Home</a></li>
-            <li><a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a></li>
-            <li><a href="#services" className={activeSection === 'services' ? 'active' : ''}>Services</a></li>
-            <li><a href="#faq" className={activeSection === 'faq' ? 'active' : ''}>Faq</a></li>
-            <li><a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
+            <li>
+              <a
+                href="#hero"
+                className={activeSection === "hero" ? "active" : ""}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about"
+                className={activeSection === "about" ? "active" : ""}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#services"
+                className={activeSection === "services" ? "active" : ""}
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="#faq"
+                className={activeSection === "faq" ? "active" : ""}
+              >
+                Faq
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className={activeSection === "contact" ? "active" : ""}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

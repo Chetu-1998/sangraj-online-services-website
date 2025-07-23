@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-const ScrollToTop = () => {
+const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Show/hide button on scroll
   const toggleVisibility = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 200) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -13,7 +13,7 @@ const ScrollToTop = () => {
   };
 
   // Scroll to top handler
-  const handleScrollTop = (e) => {
+  const handleScrollTop = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     window.scrollTo({
       top: 0,

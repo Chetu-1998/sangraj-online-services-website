@@ -21,11 +21,11 @@ const Foo = () => {
                         <div className="col-lg-2 col-6 footer-links">
                             <h4>Quick Links</h4>
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Certifications</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#hero">Home</a></li>
+                                <li><a href="#about">About us</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#faq">Faqs</a></li>
+                                <li><a href="#contact">Contact Us</a></li>
                             </ul>
                         </div>
                         <div className="col-lg-2 col-6 footer-links">

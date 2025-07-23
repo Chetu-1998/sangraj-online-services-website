@@ -2508,3 +2508,7 @@ section,
 .description-about{
   text-align: justify;
 }
+
+.about section{
+  margin-top: 50px;
+}

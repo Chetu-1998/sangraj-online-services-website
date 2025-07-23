@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Nav = () => {
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
+  const handleScroll = () => {
+    const sections = document.querySelectorAll('section[id]');
+    let currentSection = '';
+    const headerHeight = 90; // adjust this to match your actual header height in px
 
-      sections.forEach((section) => {
-        const top = section.getBoundingClientRect().top;
-        if (top <= 100 && top >= -200) {
-          currentSection = section.getAttribute('id') || '';
-        }
-      });
+    sections.forEach((section) => {
+      const top = section.getBoundingClientRect().top;
 
-      setActiveSection(currentSection);
-    };
+      if (top <= headerHeight) {
+        currentSection = section.getAttribute('id') || '';
+      }
+    });
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once on load
+    setActiveSection(currentSection);
+  };
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Run once on mount
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
 
   return (
     <header id="header" className="header d-flex align-items-center fixed-top">
@@ -36,11 +39,46 @@ const Nav = () => {
 
         <nav id="navmenu" className="navmenu">
           <ul>
-            <li><a href="#hero" className={activeSection === 'hero' ? 'active' : ''}>Home</a></li>
-            <li><a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a></li>
-            <li><a href="#services" className={activeSection === 'services' ? 'active' : ''}>Services</a></li>
-            <li><a href="#faq" className={activeSection === 'faq' ? 'active' : ''}>Faq</a></li>
-            <li><a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
+            <li>
+              <a
+                href="#hero"
+                className={activeSection === "hero" ? "active" : ""}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#about"
+                className={activeSection === "about" ? "active" : ""}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#services"
+                className={activeSection === "services" ? "active" : ""}
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="#faq"
+                className={activeSection === "faq" ? "active" : ""}
+              >
+                Faq
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className={activeSection === "contact" ? "active" : ""}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

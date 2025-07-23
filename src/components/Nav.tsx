@@ -4,30 +4,29 @@ const Nav = () => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-  const handleScroll = () => {
-    const sections = document.querySelectorAll('section[id]');
-    let currentSection = '';
-    const headerHeight = 90; // adjust this to match your actual header height in px
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      let currentSection = "";
+      const headerHeight = 90;
 
-    sections.forEach((section) => {
-      const top = section.getBoundingClientRect().top;
+      sections.forEach((section) => {
+        const top = section.getBoundingClientRect().top;
 
-      if (top <= headerHeight) {
-        currentSection = section.getAttribute('id') || '';
-      }
-    });
+        if (top <= headerHeight) {
+          currentSection = section.getAttribute("id") || "";
+        }
+      });
 
-    setActiveSection(currentSection);
-  };
+      setActiveSection(currentSection);
+    };
 
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Run once on mount
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run once on mount
 
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <header id="header" className="header d-flex align-items-center fixed-top">

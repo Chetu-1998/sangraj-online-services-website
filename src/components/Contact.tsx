@@ -15,6 +15,7 @@ const Contact = () => {
           <iframe
             style={{ border: 0, width: '100%', height: '270px' }}
             src="https://www.google.com/maps/embed?pb=..."
+            title="Google Maps location of our office"
             frameBorder={0}
             allowFullScreen
             loading="lazy"

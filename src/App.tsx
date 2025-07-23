@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import About from './components/About';
 import CallToAction from './components/CallToAction';
@@ -12,6 +13,8 @@ import ScrollToTop from './components/ScrollToTop';
 import Services from './components/Services';
 
 function App() {
+  useEffect(() => { }, []);
+
   return (
     <>
       <Nav />

@@ -3,6 +3,10 @@ import React from 'react'
 const Features = () => {
     return (
         <section id="features" className="features section">
+            <div className="container section-title" data-aos="fade-up">
+                <h2>Features</h2>
+                <p>Check Our <span className="description-title">Features</span></p>
+            </div>
             <div className="container">
                 <div className="row gy-4">
                     <div className="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">

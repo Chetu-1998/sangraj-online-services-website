@@ -4,27 +4,33 @@ const Nav = () => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id]");
-      let currentSection = "";
-      const headerHeight = 90;
+    const sections = document.querySelectorAll("section[id]");
 
-      sections.forEach((section) => {
-        const top = section.getBoundingClientRect().top;
-
-        if (top <= headerHeight) {
-          currentSection = section.getAttribute("id") || "";
-        }
-      });
-
-      setActiveSection(currentSection);
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50% 0px -50% 0px", // trigger when section is in the middle
+      threshold: 0,
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run once on mount
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          if (id) {
+            setActiveSection(id);
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
   }, []);
 

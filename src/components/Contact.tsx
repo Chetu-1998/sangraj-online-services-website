@@ -222,19 +222,15 @@ const Contact = () => {
             {/* Inline thank you message below form */}
             {status === "success" && (
               <div className="mt-4 text-success text-center fw-semibold">
-                <strong>Thank you for reaching out! We’ve received your
-                message and will get back to you shortly.</strong>
+                <strong>
+                  Thank you for reaching out! We’ve received your message and
+                  will get back to you shortly.
+                </strong>
               </div>
             )}
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </section>
   );
 };

@@ -2512,3 +2512,44 @@ section,
 .about section{
   margin-top: 50px;
 }
+
+.contact-submit-btn {
+  position: relative;
+  z-index: 10;
+  padding: 12px 30px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-submit-btn {
+    font-size: 18px;
+    padding: 14px;
+  }
+}

@@ -1,37 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-}
-
-const Contact: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+const Contact = () => {
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  useEffect(() => {
+    if (status === "success") {
+      const timer = setTimeout(() => {
+        setStatus("idle");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
+    setStatus("idle");
+
     try {
       const response = await fetch("http://localhost:5000/api/send-email", {
         method: "POST",
@@ -50,12 +49,11 @@ const Contact: React.FC = () => {
         });
       } else {
         setStatus("error");
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || "Something went wrong");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setErrorMessage("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,7 +69,6 @@ const Contact: React.FC = () => {
           </span>
         </p>
       </div>
-
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
           <iframe
@@ -84,7 +81,6 @@ const Contact: React.FC = () => {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-
         <div className="row gy-4">
           <div className="col-lg-4">
             <div
@@ -123,7 +119,6 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-
           <div className="col-lg-8">
             <form
               onSubmit={handleSubmit}
@@ -169,7 +164,6 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                   />
                 </div>
-
                 <div className="col-md-6">
                   <input
                     type="text"
@@ -184,36 +178,63 @@ const Contact: React.FC = () => {
                 <div className="col-md-12">
                   <textarea
                     name="message"
-                    rows={6}
                     className="form-control"
+                    rows={6}
                     placeholder="Message"
                     required
                     value={formData.message}
                     onChange={handleChange}
                   ></textarea>
                 </div>
-
                 <div className="col-md-12 text-center">
-                  {status === "loading" && (
-                    <div className="loading">Loading...</div>
-                  )}
-                  {status === "error" && (
-                    <div className="error-message">{errorMessage}</div>
-                  )}
                   {status === "success" && (
                     <div className="sent-message">
                       Your message has been sent. Thank you!
                     </div>
                   )}
-                  <button type="submit">
-                    Send Message
+                  {status === "error" && (
+                    <div className="error-message">
+                      Failed to send message. Please try again.
+                    </div>
+                  )}
+                  <button type="submit" disabled={loading}>
+                    {loading ? (
+                      <span
+                        className="spinner"
+                        style={{
+                          display: "inline-block",
+                          width: "20px",
+                          height: "20px",
+                          border: "2px solid white",
+                          borderTop: "2px solid transparent",
+                          borderRadius: "50%",
+                          animation: "spin 1s linear infinite",
+                        }}
+                      ></span>
+                    ) : (
+                      "REACH NOW"
+                    )}
                   </button>
                 </div>
               </div>
             </form>
+
+            {/* Inline thank you message below form */}
+            {status === "success" && (
+              <div className="mt-4 text-success text-center fw-semibold">
+                <strong>Thank you for reaching out! We’ve received your
+                message and will get back to you shortly.</strong>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 };

@@ -26,13 +26,13 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent | React.TouchEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus("idle");
 
     try {
-      const response = await fetch("http://localhost:5000/api/send-email", {
+      const response = await fetch("https://sangraj-online-services-website.onrender.com/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -59,7 +59,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact section">
-      {/* 👇 Add animation keyframes for spinner */}
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }
@@ -92,25 +91,15 @@ const Contact = () => {
 
         <div className="row gy-4">
           <div className="col-lg-4">
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
               <i className="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>
-                  Near Savata Mandir, Varchi Aali Nashirabad, Jalgaon 425309
-                </p>
+                <p>Near Savata Mandir, Varchi Aali Nashirabad, Jalgaon 425309</p>
               </div>
             </div>
 
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i className="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Us</h3>
@@ -118,11 +107,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
               <i className="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
@@ -215,13 +200,9 @@ const Contact = () => {
                     </div>
                   )}
 
-                  {/* ✅ Updated button with touch-friendly fixes */}
                   <button
                     type="submit"
                     disabled={loading}
-                    onTouchStart={(e) => {
-                      if (!loading) handleSubmit(e);
-                    }}
                     style={{
                       minHeight: "48px",
                       padding: "12px 24px",

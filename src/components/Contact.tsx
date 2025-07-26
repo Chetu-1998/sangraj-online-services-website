@@ -26,7 +26,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent | React.TouchEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus("idle");
@@ -59,6 +59,13 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact section">
+      {/* 👇 Add animation keyframes for spinner */}
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+
       <div className="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
         <p>
@@ -69,6 +76,7 @@ const Contact = () => {
           </span>
         </p>
       </div>
+
       <div className="container" data-aos="fade-up" data-aos-delay="100">
         <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
           <iframe
@@ -81,6 +89,7 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
+
         <div className="row gy-4">
           <div className="col-lg-4">
             <div
@@ -96,6 +105,7 @@ const Contact = () => {
                 </p>
               </div>
             </div>
+
             <div
               className="info-item d-flex"
               data-aos="fade-up"
@@ -107,6 +117,7 @@ const Contact = () => {
                 <p>+91 9834013659</p>
               </div>
             </div>
+
             <div
               className="info-item d-flex"
               data-aos="fade-up"
@@ -119,6 +130,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
+
           <div className="col-lg-8">
             <form
               onSubmit={handleSubmit}
@@ -138,6 +150,7 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="col-md-6">
                   <input
                     type="email"
@@ -149,6 +162,7 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="col-md-6">
                   <input
                     type="text"
@@ -164,6 +178,7 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="col-md-6">
                   <input
                     type="text"
@@ -175,6 +190,7 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="col-md-12">
                   <textarea
                     name="message"
@@ -186,6 +202,7 @@ const Contact = () => {
                     onChange={handleChange}
                   ></textarea>
                 </div>
+
                 <div className="col-md-12 text-center">
                   {status === "success" && (
                     <div className="sent-message">
@@ -197,7 +214,23 @@ const Contact = () => {
                       Failed to send message. Please try again.
                     </div>
                   )}
-                  <button type="submit" disabled={loading}>
+
+                  {/* ✅ Updated button with touch-friendly fixes */}
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    onTouchStart={(e) => {
+                      if (!loading) handleSubmit(e);
+                    }}
+                    style={{
+                      minHeight: "48px",
+                      padding: "12px 24px",
+                      position: "relative",
+                      zIndex: 10,
+                      width: "100%",
+                      touchAction: "manipulation",
+                    }}
+                  >
                     {loading ? (
                       <span
                         className="spinner"
@@ -219,7 +252,6 @@ const Contact = () => {
               </div>
             </form>
 
-            {/* Inline thank you message below form */}
             {status === "success" && (
               <div className="mt-4 text-success text-center fw-semibold">
                 <strong>

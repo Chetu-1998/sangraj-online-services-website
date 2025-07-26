@@ -236,8 +236,7 @@ const Contact = () => {
             {status === "success" && (
               <div className="mt-4 text-success text-center fw-semibold">
                 <strong>
-                  Thank you for reaching out! We’ve received your message and
-                  will get back to you shortly.
+                  Thank you for reaching out and we’ll revert at the earliest..
                 </strong>
               </div>
             )}

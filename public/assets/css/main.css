@@ -2553,3 +2553,205 @@ section,
     padding: 14px;
   }
 }
+
+
+/* Ensure header height and alignment */
+.header {
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.8); /* or your preferred color */
+  display: flex;
+  align-items: center;
+}
+
+/* Flex container spacing */
+.container-xl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo alignment */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+
+
+/* Hamburger icon */
+.mobile-nav-toggle {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  transition: color 0.3s ease;
+  margin-left: auto;
+}
+
+/* Hide hamburger on large screens */
+@media (min-width: 1200px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 1199px) {
+  /* Hamburger (toggle) icon */
+  .mobile-nav-toggle {
+    color: var(--nav-color, #fff);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10001;
+    position: relative;
+  }
+
+  /* Main nav container */
+  .navmenu {
+    position: fixed;
+    inset: 0;
+    background: #222; /* fallback background */
+    color: #fff;
+    padding-top: 60px;
+    z-index: 9997;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+
+  /* Show nav when active */
+  .mobile-nav-active .navmenu {
+    transform: translateX(0);
+  }
+
+  /* List container */
+  .navmenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Show nav items on active */
+  .mobile-nav-active .navmenu > ul {
+    display: flex;
+  }
+
+  /* Nav links */
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color, #ccc);
+    padding: 5px 10px;
+    font-family: var(--nav-font, sans-serif);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color, #fff);
+    font-weight: 600;
+  }
+
+  /* Chevron or icon */
+  .navmenu a i {
+    font-size: 12px;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--accent-color, #0d6efd), transparent 90%);
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .navmenu a i:hover {
+    background-color: var(--accent-color, #0d6efd);
+    color: var(--contrast-color, #fff);
+  }
+
+  /* Active item icon */
+  .navmenu .active i {
+    background-color: var(--accent-color, #0d6efd);
+    color: var(--contrast-color, #fff);
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown list */
+  .navmenu .dropdown ul {
+    display: none;
+    padding: 10px 0;
+    margin: 0 20px;
+    background-color: var(--nav-dropdown-background-color, #333);
+    border-radius: 6px;
+    transition: max-height 0.4s ease;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  /* Show active dropdown */
+  .navmenu .dropdown > .dropdown-active {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Prevent body scroll */
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  /* Close icon styling */
+  .mobile-nav-active .mobile-nav-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    margin-right: 0;
+    font-size: 32px;
+    color: #fff;
+    z-index: 10002;
+  }
+
+  /* Mobile backdrop (optional for dimming background) */
+  .mobile-nav-active .navmenu {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .navmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 60px 10px;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* ✅ Center text horizontally */
+  text-align: center;   /* ✅ Center text content */
+}
+
+}

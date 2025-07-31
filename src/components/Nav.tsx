@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 
 const Nav = () => {
   const [activeSection, setActiveSection] = useState("");
+  const [mobileNavActive, setMobileNavActive] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
 
     const observerOptions = {
       root: null,
-      rootMargin: "-50% 0px -50% 0px", // trigger when section is in the middle
+      rootMargin: "-50% 0px -50% 0px",
       threshold: 0,
     };
 
@@ -23,16 +24,31 @@ const Nav = () => {
       });
     }, observerOptions);
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    sections.forEach((section) => observer.observe(section));
 
     return () => {
-      sections.forEach((section) => {
-        observer.unobserve(section);
-      });
+      sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
+
+  const toggleMobileNav = () => {
+    const newState = !mobileNavActive;
+    setMobileNavActive(newState);
+    document.body.classList.toggle("mobile-nav-active", newState);
+  };
+
+  const closeMobileNav = () => {
+    setMobileNavActive(false);
+    document.body.classList.remove("mobile-nav-active");
+  };
+
+  const navItems = [
+    { id: "hero", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "services", label: "Services" },
+    { id: "faq", label: "Faq" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
     <header id="header" className="header d-flex align-items-center fixed-top">
@@ -42,50 +58,32 @@ const Nav = () => {
           <h1 className="sitename">SANGRAJ</h1>
         </a>
 
-        <nav id="navmenu" className="navmenu">
+        {/* Hamburger Icon - visible on mobile only */}
+        <i
+          className={`mobile-nav-toggle d-xl-none bi ${
+            mobileNavActive ? "bi-x" : "bi-list"
+          }`}
+          onClick={toggleMobileNav}
+        ></i>
+
+        {/* Navigation Menu */}
+        <nav
+          id="navmenu"
+          className={`navmenu ${mobileNavActive ? "navmenu-active" : ""}`}
+        >
           <ul>
-            <li>
-              <a
-                href="#hero"
-                className={activeSection === "hero" ? "active" : ""}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className={activeSection === "about" ? "active" : ""}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#services"
-                className={activeSection === "services" ? "active" : ""}
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#faq"
-                className={activeSection === "faq" ? "active" : ""}
-              >
-                Faq
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className={activeSection === "contact" ? "active" : ""}
-              >
-                Contact
-              </a>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className={activeSection === item.id ? "active" : ""}
+                  onClick={closeMobileNav}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
-          <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
     </header>

@@ -78,7 +78,7 @@ const Contact = () => {
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
-        <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
+        {/* <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
           <iframe
             style={{ border: 0, width: "100%", height: "270px" }}
             src="https://www.google.com/maps/embed?pb=..."
@@ -88,7 +88,7 @@ const Contact = () => {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
-        </div>
+        </div> */}
 
         <div className="row gy-4">
           <div className="col-lg-4">

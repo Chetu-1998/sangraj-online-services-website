@@ -13,7 +13,9 @@ const Contact = () => {
 
   useEffect(() => {
     if (status === "success") {
-      const timer = setTimeout(() => setStatus("idle"), 3000);
+      const timer = setTimeout(() => {
+        setStatus("idle");
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [status]);
@@ -24,15 +26,13 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent | React.TouchEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus("idle");
 
     try {
-      // ✅ API URL from .env
-      const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/send-email`, {
+      const response = await fetch("http://localhost:5000/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -50,8 +50,7 @@ const Contact = () => {
       } else {
         setStatus("error");
       }
-    } catch (err) {
-      console.error("Error sending form:", err);
+    } catch {
       setStatus("error");
     } finally {
       setLoading(false);
@@ -60,6 +59,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact section">
+      {/* 👇 Add animation keyframes for spinner */}
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }
@@ -78,8 +78,19 @@ const Contact = () => {
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
+        <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
+          <iframe
+            style={{ border: 0, width: "100%", height: "270px" }}
+            src="https://www.google.com/maps/embed?pb=..."
+            title="Google Maps location of our office"
+            frameBorder={0}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+
         <div className="row gy-4">
-          {/* Contact Info */}
           <div className="col-lg-4">
             <div
               className="info-item d-flex"
@@ -94,6 +105,7 @@ const Contact = () => {
                 </p>
               </div>
             </div>
+
             <div
               className="info-item d-flex"
               data-aos="fade-up"
@@ -105,6 +117,7 @@ const Contact = () => {
                 <p>+91 9834013659</p>
               </div>
             </div>
+
             <div
               className="info-item d-flex"
               data-aos="fade-up"
@@ -118,7 +131,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="col-lg-8">
             <form
               onSubmit={handleSubmit}
@@ -203,18 +215,25 @@ const Contact = () => {
                     </div>
                   )}
 
+                  {/* ✅ Updated button with touch-friendly fixes */}
                   <button
                     type="submit"
                     disabled={loading}
+                    onTouchStart={(e) => {
+                      if (!loading) handleSubmit(e);
+                    }}
                     style={{
                       minHeight: "48px",
                       padding: "12px 24px",
+                      position: "relative",
+                      zIndex: 10,
                       width: "100%",
                       touchAction: "manipulation",
                     }}
                   >
                     {loading ? (
                       <span
+                        className="spinner"
                         style={{
                           display: "inline-block",
                           width: "20px",
